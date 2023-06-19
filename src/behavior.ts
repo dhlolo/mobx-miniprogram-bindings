@@ -9,6 +9,7 @@ export const behavior = Behavior({
   definitionFilter: (defFields: TDefFields) => {
     defFields.methods = defFields.methods || {};
     const { storeBindings } = defFields;
+    // FIXME: 这里的 _mobxMiniprogramBindings 定义 导致了一个寄生环境下只能存在一个 bindings，否则会被覆盖，即只有最后一个生效
     defFields.methods._mobxMiniprogramBindings = () => {
       return storeBindings;
     };
